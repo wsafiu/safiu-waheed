@@ -1,0 +1,126 @@
+#about {
+  max-width: 900px; 
+} 
+
+.about .inner {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 50px;
+    text-align: justify;
+}
+
+.about ul.skill__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(140px, 200px));
+    gap: 0 10px;
+    padding: 0;
+    margin: 20px 0 0;
+    overflow: hidden;
+    list-style: none;
+}
+
+.about ul.skill__list li {
+    position: relative;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    font-family: var(--font-mono);
+    font-size: var(--fz-xs);
+}
+
+.about ul.skill__list li::before {
+    content: "▹";
+    position: absolute;
+    left: 0px;
+    color: var(--green);
+    font-size: var(-fz-sm);
+    line-height: 12px;
+}
+
+.inner .about__pic {
+    position: relative;
+    max-width: 300px;
+}
+
+.inner .about__pic .wrapper {
+    box-shadow: 0 10px 30px -15px var(--navy-shadow);
+    display: block;
+    position: relative;
+    border-radius: var(--border-radius);
+    background-color: var(--green);
+    transition: var(--transition);
+    width: 100%;
+}
+
+.inner .about__pic .wrapper::before, 
+.inner .about__pic .wrapper::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.inner .about__pic .wrapper::before {
+    top: 0px;
+    left: 0px;
+    background-color: var(--navy);
+    mix-blend-mode: overlay;
+}
+
+.inner .about__pic .wrapper::after {
+    border: 2px solid var(--green);
+    top: 20px;
+    left: 20px;
+    z-index: -1;
+}
+
+.inner .wrapper .img {
+    position: relative;
+    border-radius: var(--border-radius);
+    mix-blend-mode: multiply;
+    filter: grayscale(100%) contrast(1);
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+
+
+.inner .wrapper img {
+    height: 100%;
+    margin: 0;
+    max-width: none;
+    padding: 0;
+    width: 100%;
+    object-fit: cover;
+}
+
+.inner .wrapper:hover, .inner .wrapper:focus {
+    background: transparent;
+    outline: 0px;
+    box-shadow: 0 20px 30px -15px var(--nav);
+}
+
+.inner .wrapper:hover::after,
+.inner .wrapper:focus::after {
+    top: 15px;
+    left: 15px;
+}
+
+.inner .wrapper:hover .img {
+    mix-blend-mode: normal;
+    filter: none;
+}
+
+
+@media (max-width: 768px) {
+    .about .inner {
+        display: block;
+    }
+
+    .inner .about__pic {
+        width: 70%;
+        margin: 50px auto 0;
+    }
+}

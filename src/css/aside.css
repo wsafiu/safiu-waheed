@@ -1,0 +1,70 @@
+.side__element {
+    width: 40px;
+    position: fixed;
+    bottom: 0px;
+    z-index: 10;
+    color: var(--lightest-slate);
+}
+.side__element.left {
+    left: 40px;
+    right: auto;
+}
+
+.side__element.right {
+    right: 40px;
+   left: auto;
+}
+
+.side__element ul {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.side__element ul li a{
+   padding: 10px;
+}
+
+.side__element ul li a:hover {
+    transform: translateY(-3px);
+    color: var(--green);
+}
+
+.side__element li a svg {
+    width: 20px;
+    height: 20px;
+}
+ 
+.side__element ul::after, .side__element .email::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 150px;
+    margin: 0px autp;
+    background-color: var(--lightest-slate);
+}
+
+.side__element .email {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+}
+
+
+.side__element .email a {
+    margin: 20px auto;
+    padding: 10px;
+    font-family: var(--font-mono);
+    font-size: var(--fz-xxs);
+    line-height: var(--fz-lg);
+    letter-spacing: 0.3em;
+    writing-mode: vertical-rl;
+
+
+}

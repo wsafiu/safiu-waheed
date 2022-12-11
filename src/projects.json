@@ -1,0 +1,65 @@
+ [
+    {
+        "projectId": 1,
+        "title": "School Management System",
+        "desc": "A System to mechanize the existing manual system with computerized equipment and developed computer software, fufilling the necessities of all teacher and student. Valuable data can be stock up for a more extended period with easy access",
+        "resources": ["NuxtJS", "VueJS", "Node", "MongoDB", "Express", "Material UI"],
+        "status": "pending",
+        "repo": "",
+        "url": "/#"
+    },
+    {
+        "projectId": 2,
+        "title": "Fashion Outfit App",
+        "desc": "A web base app that chooses outfits for you to wear and sew. So if you are the type of person who is indecisive you could take that all away by just letting this app randomly choose outfits for you to wear and sew at any of your convinent time",
+        "resources": ["React", "Redux", "Node", "MongoDB", "Express", "Bootsrap"],
+        "status": "pending",
+        "repo": "",
+        "url": "/#"
+    },
+    {
+        "projectId": 3,
+        "title": "E-Commerce Website",
+        "desc": "A shopping platform to view, sell and buy goods",
+        "resources": ["React", "Redux", "Node", "MongoDB", "Express", "Bootsrap"],
+        "status": "pending",
+        "repo": "",
+        "url": "/#"
+    },
+    {
+        "projectId": 4,
+        "title": "ChatBot App",
+        "desc": "An app that keeps track of your daily tasks and gives you recommendations on how to improve productivity",
+        "resources": ["React", "Redux", "Node", "MongoDB", "Express", "Bootsrap"],
+        "status": "pending",
+        "repo": "",
+        "url": "/#"
+    },
+    {
+        "projectId": 5,
+        "title": "Scientific Web Calculator",
+        "desc": "A calculator that allow you to perform scientific operation",
+        "resources": ["React/Vue"],
+        "status": "pending",
+        "repo": "",
+        "url": "/#"
+    },
+    {
+        "projectId": 6,
+        "title": "Finance Budgeting App",
+        "desc": "An App that let you see all of your incomings and outgoings as well as all purchases made annually so you can track them year by year. You can even set it up to check daily, monthly and annually giving you an overview of your spending habits",
+        "resources": ["React/Vue", "Express", "Node", "MongoDB", "Redux"],
+        "status": "pending",
+        "repo": "",
+        "url": "/#"
+    },
+    {
+        "projectId": 7,
+        "title": "Random Meme Generator",
+        "desc": "An app that come up with some funny content. Combining random text with images or even something that is animated would go a long way to stardom.",
+        "resources": ["React/Vue", "Express", "Node", "MongoDB", "Redux"],
+        "status": "pending",
+        "repo": "",
+        "url": "/#"
+    }
+]

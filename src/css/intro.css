@@ -1,0 +1,66 @@
+.intro {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 0px;
+}
+
+.intro h1 {
+    margin: 0 0 30px 4px;
+    color: var(--green);
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
+}
+
+.intro h3 {
+    margin: 10px 0;
+    line-height: 0.9;
+    color:#8892b0 !important;
+    font-size: clamp(40px, 3vw, 80px);
+}
+#stack::after {
+    content: "|";
+}
+.big-heading {
+    margin: 0px;
+    font-size: clamp(40px, 5vw, 80px);
+}
+.intro p {
+    line-height: 35px;
+}
+
+mark {
+    border-radius: 10px;
+    color: var(--white);
+    background: none;
+    border: 1px solid var(--green);
+    padding: 5px;
+    cursor: pointer;
+    transition: all 1s;
+    font-size: clamp(var(--fz-sm), 2vw, var(--fz-md));
+}
+
+.intro .email-link {
+    color: var(--green);
+    background-color: transparent;
+    border: 1px solid var(--green);
+    padding: 1.25rem 1.75rem;
+    font-size: var(--fz-sm);
+    font-family: var(--font-mono);
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 50px;
+}
+
+@media (max-width: 480px) and (min-height: 700px) {
+    .intro {
+        padding-bottom: 10vh;
+    }
+}
