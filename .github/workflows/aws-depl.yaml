@@ -57,7 +57,7 @@ jobs:
       - name: Install AWS CLI
         run: |
           sudo apt update
-          sudo apt install -y awscli
+          sudo snap install aws-cli --classic
       - name: Sync file to s3
         run: |
           aws s3 sync build/ s3://${{ secrets.S3_BUCKET_NAME }} --acl public-read
