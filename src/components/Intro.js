@@ -30,7 +30,7 @@ function Intro() {
         if (forwardCounter === stackContent.length)
           backwardCounter = currentText.length;
       }
-    }, 300);
+    }, 200);
   }, []);
 
   return (
@@ -44,14 +44,13 @@ function Intro() {
         </h2>
       </div>
       <div>
-        <h3 id="stack">MERN, MEVN Web Developer.</h3>
+        <h3 id="stack">Backend Engineer (Nodejs, .Net)</h3>
       </div>
       <div data-aos="fade-right" data-aos-delay="200">
         <p>
-          I'm a software engineer specializing in building and developing
-          website and web base application. Currently, I'm focused on learning
-          new language like <mark>JAVA</mark>, <mark>Python</mark>,{" "}
-          <mark>C#</mark>, <mark>C++</mark>
+          I'm a software engineer specializing in building robust and secure API. Currently, I'm focused on learning
+          new technology in language like <mark>C#</mark>, <mark>JavaScript</mark>,{" "}
+          <mark>Typescript</mark>
         </p>
       </div>
 

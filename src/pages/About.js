@@ -9,31 +9,32 @@ function About() {
           <div>
             <p>
               Hello! My name is Waheed Safiu, <br />
-              I'm Motivated software engineering studies Computer Science at the
-              prestigeous University of Ibadan and I enjoy programming and
-              anything related to Computer. My interest is in Software
-              Engineering started back in 2019 when I decided to try and learn
-              Web development from D.E Proficient Software at Polytechnics
-              Ibadan.
+              I'm software engineering(backend) with proficiency in Node.js and .NET. Strong background in developing
+              scalable and robust applications using modern web technologies. Studies Computer Science at the
+              prestigious University of Ibadan and I enjoy programming and I'm capable of delivering
+              high-quality projects on time. Passionate about learning new technologies and improving code quality.
             </p>
 
             <p>
               Fast-forward to today, and I've had the priviledge of learning
               different language like <span>JavaScript</span>, <span>Java</span>
-              , <span>C#</span>, <span>Phython</span> and JavaScript framework
-              like <span>ReactJS</span>, <span>VueJS</span>, <span>NuxtJS</span>
+              , <span>C#</span>, <span>Phython</span> and framework
+              like <span>ReactJS</span>, <span>NextJs</span>, <span>AspNetCore</span>, <span>NestJs </span>
               which I hope will be useful for different project in the future
             </p>
 
             <p>Here are the few technologies I have work with</p>
 
             <ul className="skill__list">
-              <li>JavaScript</li>
+              <li>NestJs</li>
+              <li>React-Native</li>
+              <li>AspNetCore</li>
+              <li>Nextjs</li>
+              <li>Grpc</li>
               <li>React</li>
-              <li>Vue</li>
-              <li>Nodejs</li>
-              <li>Java</li>
-              <li>C#</li>
+              <li>Mongodb</li>
+              <li>SocketIO</li>
+              <li>MSSQL</li>
             </ul>
           </div>
         </div>
@@ -48,7 +49,7 @@ function About() {
                   sizes="(min-width: 500px) 500px, 100vw"
                   decoding="async"
                   src="/profile.png"
-                  srcset="/profile.png"
+                  srcset="/profile.jpg"
                   alt="Headshot"
                   style={{ objectFit: "cover", opacity: 1 }}
                 />

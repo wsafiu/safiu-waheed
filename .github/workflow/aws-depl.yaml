@@ -1,0 +1,75 @@
+name: Build and Deploy React App
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    name: Build React App
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      # Step 3: Install dependencies and build
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build
+
+      # Step 4: Upload build artifact
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: react-build
+          path: build/
+
+  deploy:
+    name: Deploy to EC2
+    runs-on: ubuntu-latest
+    needs: build # Ensure this job runs only after the build job is successful
+
+    steps:
+      # Step 1: Download build artifact
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: react-build
+
+      # Step 2: Compress the build folder
+      - name: Compress Build Folder
+        run: zip -r build.zip build/
+
+      # Step 3: Copy build folder to EC2 instance
+      - name: Deploy to EC2
+        uses: appleboy/scp-action@v0.2.4
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_PRIVATE_KEY }}
+          source: build.zip
+          target: /home/${{ secrets.EC2_USER }}/react-app/
+
+      # Step 4: SSH into EC2 and Deploy
+      - name: SSH into EC2 and Deploy
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_PRIVATE_KEY }}
+          script: |
+            sudo apt update
+            sudo apt install -y unzip
+            cd /home/${{ secrets.EC2_USER }}/react-app
+            unzip -o build.zip
+            sudo cp -r build/* /var/www/html/
+            sudo systemctl restart nginx
