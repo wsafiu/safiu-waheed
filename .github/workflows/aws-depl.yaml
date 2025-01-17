@@ -54,9 +54,15 @@ jobs:
           aws-region: us-east-1 # Replace with your desired AWS region
       
       # Step 3: Sync files to S3 bucket
-      - name: Upload to S3
-        uses: aws-actions/s3-sync-action@v0.5.2
-        with:
-          bucket: ${{ secrets.S3_BUCKET_NAME }} # Replace with your S3 bucket name
-          source-dir: build/
-          acl: public-read
+      - name: Install AWS CLI
+        run: |
+          sudo apt update
+          sudo apt install -y awscli
+      - name: Sync file to s3
+        run: |
+          aws s3 sync build/ s3://${{ secrets.S3_BUCKET_NAME }} --acl public-read
+#          run
+#        with:
+#          bucket: ${{ secrets.S3_BUCKET_NAME }} # Replace with your S3 bucket name
+#          source-dir: build/
+#          acl: public-read
