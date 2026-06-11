@@ -10,7 +10,7 @@ function ResumeBtn({ padding = "0.75rem 1rem", title = "Resume" }) {
     textDecoration: "none",
     cursor: "pointer",
     transition: "var(--transition)",
-    marginLeft: "15px",
+    // marginLeft: "15px",
     fontSize: "var(--fz-sm)",
     width: "max-content",
   };
@@ -19,7 +19,7 @@ function ResumeBtn({ padding = "0.75rem 1rem", title = "Resume" }) {
     <div>
       <a
         className="resume-button"
-        href="https://drive.google.com/file/d/1jemQatMndXplBT7QSL0strUrGv232DhR/view?usp=drivesdk"
+        href="https://docs.google.com/document/d/e/2PACX-1vQvA3s7i3FKO9iQmHU0bdpqiTcMKHcpWw8Mkt64-mDU4kouDYrVTAcQxMXv-dq8PLg_aHViE0P1rCsY/pub"
         target="_blank"
         rel="noopener noreferrer"
         style={style}

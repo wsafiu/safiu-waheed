@@ -1,10 +1,18 @@
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Project from "../components/Project";
 import project001 from "../assests/project001.png";
 import project002 from "../assests/project002.png";
 
 import "../css/project.css";
 
+gsap.registerPlugin(ScrollTrigger);
+
 function Projects() {
+  const sectionRef = useRef(null);
+
   const projects = [
     {
       id: 1,
@@ -35,8 +43,37 @@ function Projects() {
       url: "https://iseoluwa.netlify.app/",
     },
   ];
+
+  useGSAP(
+    () => {
+      gsap.from("#projects h3", {
+        y: -20,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 85%",
+        },
+      });
+
+      gsap.from(".projects li", {
+        y: 60,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".projects",
+          start: "top 80%",
+        },
+      });
+    },
+    { scope: sectionRef }
+  );
+
   return (
-    <section data-aos="fade-up" id="projects">
+    <section id="projects" ref={sectionRef}>
       <h3 className="number-heading">Some Things I've Built</h3>
       <ul className="projects">
         {projects.map((project, i) => (
@@ -48,3 +85,4 @@ function Projects() {
 }
 
 export default Projects;
+

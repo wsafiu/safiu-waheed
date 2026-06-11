@@ -1,9 +1,34 @@
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import "../css/footer.css";
 
+gsap.registerPlugin(ScrollTrigger);
+
 function Footer() {
+  const footerRef = useRef(null);
+
+  useGSAP(
+    () => {
+      gsap.from(footerRef.current, {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: footerRef.current,
+          start: "top 95%",
+        },
+      });
+    },
+    { scope: footerRef }
+  );
+
   return (
-    <footer class="footer">
-      <div class="social__links">
+    <footer className="footer" ref={footerRef}>
+      <div className="social__links">
         <ul>
           <li>
             <a
@@ -31,7 +56,7 @@ function Footer() {
           <li>
             <a
               href="https://web.facebook.com/safiu.waheed.5"
-              aria-label="Instagram"
+              aria-label="Facebook"
               target="_blank"
               rel="noreferrer"
             >
@@ -104,7 +129,7 @@ function Footer() {
           </li>
         </ul>
       </div>
-      <div class="Styled__credit">
+      <div className="Styled__credit">
         <a href="/" rel="noopener noreferrer" target="_blank">
           <div>Designed &amp; Built by Waheed Safiu</div>
         </a>
@@ -114,3 +139,4 @@ function Footer() {
 }
 
 export default Footer;
+

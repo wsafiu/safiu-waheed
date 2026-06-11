@@ -1,19 +1,53 @@
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { useEffect } from "react";
-
 import Aside from "./components/Aside";
 import Main from "./Main";
-
-import AOS from "aos";
-import "aos/dist/aos.css";
+import CustomCursor from "./components/CustomCursor";
 
 function App() {
-  useEffect(() => {
-    AOS.init();
-  }, []);
+  const appRef = useRef(null);
+
+  useGSAP(
+    () => {
+      // Left sidebar — social icons stagger up
+      gsap.from(".side__element.left ul li", {
+        y: 20,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: "power3.out",
+        delay: 1.2,
+      });
+
+      // Left sidebar — line after icons
+      gsap.from(".side__element.left::after", {
+        scaleY: 0,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.out",
+        delay: 1.8,
+        transformOrigin: "bottom",
+      });
+
+      // Right sidebar — email fades in
+      gsap.from(".side__element.right .email", {
+        opacity: 0,
+        y: 10,
+        duration: 0.6,
+        ease: "power3.out",
+        delay: 1.4,
+      });
+    },
+    { scope: appRef }
+  );
+
   return (
-    <div className="App">
+    <div className="App" ref={appRef}>
+      <CustomCursor />
       <Header />
       <Aside orientation="left">
         <ul>
@@ -43,7 +77,7 @@ function App() {
           <li>
             <a
               href="https://web.facebook.com/safiu.waheed.5"
-              aria-label="Instagram"
+              aria-label="Facebook"
               target="_blank"
               rel="noreferrer"
             >
@@ -129,3 +163,4 @@ function App() {
 }
 
 export default App;
+
