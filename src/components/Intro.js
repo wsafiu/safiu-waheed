@@ -68,6 +68,7 @@ function Intro() {
         <h2 className="big-heading">Waheed Safiu</h2>
       </div>
       <div>
+        {/* eslint-disable-next-line jsx-a11y/heading-has-content */}
         <h3 id="stack" aria-label="Role title"></h3>
       </div>
       <div>
