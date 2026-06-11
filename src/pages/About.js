@@ -1,8 +1,67 @@
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import "../css/about.css";
 
+gsap.registerPlugin(ScrollTrigger);
+
 function About() {
+  const aboutRef = useRef(null);
+
+  useGSAP(
+    () => {
+      gsap.from(".about__text", {
+        x: -60,
+        opacity: 0,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: aboutRef.current,
+          start: "top 80%",
+        },
+      });
+
+      gsap.from(".about__pic", {
+        x: 60,
+        opacity: 0,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: aboutRef.current,
+          start: "top 80%",
+        },
+      });
+
+      gsap.from(".about h2", {
+        y: -20,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: aboutRef.current,
+          start: "top 85%",
+        },
+      });
+
+      gsap.from(".skill__list li", {
+        y: 15,
+        opacity: 0,
+        duration: 0.4,
+        stagger: 0.08,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".skill__list",
+          start: "top 85%",
+        },
+      });
+    },
+    { scope: aboutRef }
+  );
+
   return (
-    <section id="about" className="about" data-aos="fade-up">
+    <section id="about" className="about" ref={aboutRef}>
       <h2 className="number-heading">About Me</h2>
       <div className="inner">
         <div className="about__text">
@@ -63,3 +122,4 @@ function About() {
 }
 
 export default About;
+

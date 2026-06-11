@@ -38,8 +38,8 @@
     justify-content: center;
     -webkit-box-align: center;
     align-items: center;
-    width: 90px;
-    height: 90px;
+    width: 150px;
+    height: 150px;
     object-fit: fill;
 }
 
@@ -72,7 +72,7 @@
     counter-increment: item 1;
 }
 
-.menu ol li a{
+.menu ol li a {
     padding: 10px;
 }
 
@@ -93,7 +93,9 @@ a {
     text-align: right;
 }
 
-.menu__small, .menu__small__btn, .menu__small_aside {
+.menu__small,
+.menu__small__btn,
+.menu__small_aside {
     display: none;
 }
 
@@ -111,10 +113,10 @@ a {
     height: 24px;
 }
 
-.menu__small__btn .ham-box-inner {  
+.menu__small__btn .ham-box-inner {
     position: absolute;
     top: 50%;
-    right: 0px;   
+    right: 0px;
     width: var(--hamburger-width);
     height: 2px;
     border-radius: var(--border-radius);
@@ -123,10 +125,10 @@ a {
     transform: rotate(0deg);
 }
 
-.menu__small__btn__cancel .ham-box-inner {  
+.menu__small__btn__cancel .ham-box-inner {
     position: absolute;
     top: 50%;
-    right: 0px;   
+    right: 0px;
     width: var(--hamburger-width);
     height: 2px;
     border-radius: var(--border-radius);
@@ -136,9 +138,9 @@ a {
 }
 
 .menu__small__btn .ham-box-inner::before,
- .menu__small__btn .ham-box-inner::after,
- .menu__small__btn__cancel .ham-box-inner::before,
- .menu__small__btn__cancel .ham-box-inner::after  {
+.menu__small__btn .ham-box-inner::after,
+.menu__small__btn__cancel .ham-box-inner::before,
+.menu__small__btn__cancel .ham-box-inner::after {
     content: "";
     display: block;
     position: absolute;
@@ -186,9 +188,12 @@ a {
     .header {
         padding: 0px 25px;
     }
-   .menu__small, .menu__small__btn {
+
+    .menu__small,
+    .menu__small__btn {
         display: block;
     }
+
     .side__element {
         display: none;
     }
@@ -196,11 +201,13 @@ a {
     .menu {
         display: none;
     }
+
     /* .menu__small {
         display: block;
     } */
 
-    .menu__small__btn, .menu__small__btn__cancel  {
+    .menu__small__btn,
+    .menu__small__btn__cancel {
         display: flex;
         -webkit-box-pack: center;
         justify-content: center;
@@ -253,10 +260,8 @@ a {
         padding: 0px 40px;
     }
 
-    .side__element  {
+    .side__element {
         left: 20px;
         right: auto;
     }
 }
-
-

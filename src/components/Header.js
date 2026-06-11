@@ -1,22 +1,53 @@
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import SideNav from "./SideNav";
 import ResumeBtn from "./ResumeBtn";
 
 import "../css/header.css";
 
 function Header() {
+  const navRef = useRef(null);
+
+  useGSAP(
+    () => {
+      gsap.from(".nav .menu ol li", {
+        y: -30,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power3.out",
+        stagger: 0.1,
+        delay: 0.3,
+      });
+
+      gsap.from(".nav .logo", {
+        y: -20,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power3.out",
+        delay: 0.1,
+      });
+
+      gsap.from(".resume-btn", {
+        y: -20,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power3.out",
+        delay: 0.7,
+      });
+    },
+    { scope: navRef }
+  );
+
   const toggleSideNav = (e) => {
     const sidenav = document.querySelector(".menu__small_aside");
-
     sidenav.classList.toggle("show_side_nav");
-    console.log(sidenav.classList);
-
-    console.log("Change Icon");
     e.currentTarget.classList.toggle("menu__small__btn");
     e.currentTarget.classList.toggle("menu__small__btn__cancel");
   };
 
   return (
-    <header className="header">
+    <header className="header" ref={navRef}>
       <nav className="nav">
         <div className="logo">
           <a href="/" aria-label="home">
@@ -25,16 +56,16 @@ function Header() {
         </div>
         <div className="menu">
           <ol>
-            <li data-aos="fade-down">
+            <li>
               <a href="/#about">About</a>
             </li>
-            <li data-aos="fade-down" data-aos-delay="100">
+            <li>
               <a href="/#experience">Experience</a>
             </li>
-            <li data-aos="fade-down" data-aos-delay="200">
+            <li>
               <a href="/#projects">Work</a>
             </li>
-            <li data-aos="fade-down" data-aos-delay="300">
+            <li>
               <a href="/#contact">Contact</a>
             </li>
           </ol>

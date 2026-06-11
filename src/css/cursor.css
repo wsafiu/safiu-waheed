@@ -1,0 +1,52 @@
+/* ─── Hide native cursor ────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    /* cursor: none !important; */
+}
+
+/* ─── Magnifier lens frame ──────────────────────────────────── */
+.cursor__lens {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    /* Glass frame */
+    border: 2.5px solid var(--green);
+    box-shadow:
+        0 0 0 1px rgba(100, 255, 218, 0.15),
+        0 12px 40px rgba(0, 0, 0, 0.55),
+        inset 0 0 24px rgba(100, 255, 218, 0.06);
+    /* Subtle glass tint so text pops */
+    background-color: var(--navy);
+    pointer-events: none;
+    z-index: 9999;
+    /* Centre on the cursor hotspot */
+    transform: translate(-50%, -50%);
+    transition: opacity 0.15s ease;
+}
+
+/* ─── Inner container (holds the scaled page clone) ─────────── */
+.cursor__lens-inner {
+    position: absolute;
+    /* top / left driven by JS to scroll the clone into view */
+}
+
+/* ─── Hidden when cursor leaves the window ──────────────────── */
+.cursor__lens.is-hidden {
+    opacity: 0;
+}
+
+/* ─── Disable on touch devices ──────────────────────────────── */
+@media (hover: none) and (pointer: coarse) {
+    .cursor__lens {
+        display: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+        cursor: auto !important;
+    }
+}

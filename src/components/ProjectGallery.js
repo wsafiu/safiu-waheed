@@ -1,10 +1,47 @@
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import "../css/project__gallery.css";
 import projectList from "../projects.json";
 
+gsap.registerPlugin(ScrollTrigger);
+
 function ProjectGallery() {
-  console.log(projectList);
+  const galleryRef = useRef(null);
+
+  useGSAP(
+    () => {
+      gsap.from(".project__gallery .title", {
+        y: -20,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: galleryRef.current,
+          start: "top 85%",
+        },
+      });
+
+      gsap.from(".project__item", {
+        y: 50,
+        opacity: 0,
+        scale: 0.95,
+        duration: 0.6,
+        stagger: 0.12,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".project__grid",
+          start: "top 80%",
+        },
+      });
+    },
+    { scope: galleryRef }
+  );
+
   return (
-    <section className="project__gallery" data-aos="fade-up">
+    <section className="project__gallery" ref={galleryRef}>
       <h2 className="title">Projects Gallery</h2>
       <a href="#/" className="inline__link archieve__link">
         Featured Project
@@ -46,10 +83,10 @@ function ProjectGallery() {
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="feather feather-github"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="feather feather-github"
                         style={{ width: "20px", height: "20px" }}
                       >
                         <title>GitHub</title>
@@ -112,3 +149,4 @@ function ProjectGallery() {
 }
 
 export default ProjectGallery;
+
