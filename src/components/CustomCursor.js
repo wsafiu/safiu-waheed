@@ -117,24 +117,37 @@ function CustomCursor() {
       rafId = requestAnimationFrame(syncLoop);
     };
 
-    // ── Mouse tracking ─────────────────────────────────────────────
-    const onMove = (e) => {
-      const { clientX: x, clientY: y } = e;
-      const sx   = window.scrollX;
-      const sy   = window.scrollY;
+    // ── Mouse + scroll tracking ────────────────────────────────
+    // We track the last known mouse position so we can reposition the
+    // clone viewport whenever the page scrolls (e.g. during a smooth
+    // programmatic scroll triggered by a navbar click).  Without this,
+    // the inner clone drifts because no mousemove fires during scroll.
+    let lastX = 0;
+    let lastY = 0;
+
+    const updateInner = () => {
       const half = SIZE / 2;
-
-      lens.style.left = `${x}px`;
-      lens.style.top  = `${y}px`;
-
-      inner.style.left = `${-(x + sx) * ZOOM + half}px`;
-      inner.style.top  = `${-(y + sy) * ZOOM + half}px`;
+      inner.style.left = `${-(lastX + window.scrollX) * ZOOM + half}px`;
+      inner.style.top  = `${-(lastY + window.scrollY) * ZOOM + half}px`;
     };
+
+    const onMove = (e) => {
+      lastX = e.clientX;
+      lastY = e.clientY;
+      lens.style.left = `${lastX}px`;
+      lens.style.top  = `${lastY}px`;
+      updateInner();
+    };
+
+    // Re-calculate on every scroll frame so the glass stays aligned
+    // while the page scrolls (both user-initiated and programmatic).
+    const onScroll = () => updateInner();
 
     const onLeave = () => lens.classList.add("is-hidden");
     const onEnter = () => lens.classList.remove("is-hidden");
 
     window.addEventListener("mousemove", onMove);
+    window.addEventListener("scroll",    onScroll, { passive: true });
     document.addEventListener("mouseleave", onLeave);
     document.addEventListener("mouseenter", onEnter);
 
@@ -158,11 +171,12 @@ function CustomCursor() {
     }
 
     return () => {
-      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mousemove",  onMove);
+      window.removeEventListener("scroll",     onScroll);
       document.removeEventListener("mouseleave", onLeave);
       document.removeEventListener("mouseenter", onEnter);
       window.removeEventListener("resize", onResize);
-      window.removeEventListener("load", init);
+      window.removeEventListener("load",   init);
       cancelAnimationFrame(rafId);
     };
   }, []);
