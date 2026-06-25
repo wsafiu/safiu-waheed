@@ -1,10 +1,13 @@
 function Tab({ experience, active, id, setActiveTab }) {
-  console.log(id);
   return (
     <button
       data-target={id}
-      tabindex="0"
-      class={`tab_btn ${active ? "active__tab" : null} `}
+      tabIndex={0}
+      role="tab"
+      aria-selected={active}
+      aria-controls={`panel-${id}`}
+      id={`tab-${id}`}
+      className={`tab_btn${active ? " active__tab" : ""}`}
       onClick={setActiveTab}
     >
       <span>{experience.tabTitle}</span>
