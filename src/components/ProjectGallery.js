@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,32 +13,67 @@ function ProjectGallery() {
 
   useGSAP(
     () => {
-      gsap.from(".project__gallery .title", {
-        y: -20,
-        opacity: 0,
-        duration: 0.6,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: galleryRef.current,
-          start: "top 85%",
-        },
-      });
+      // fromTo makes both start and end states explicit.
+      // invalidateOnRefresh: true → GSAP re-applies the start state on
+      // every ScrollTrigger.refresh() call, so positions are always correct
+      // even when images above push the page taller after load.
+      // once: true  → animation plays once and won't reverse on scroll-up.
+      gsap.fromTo(
+        ".title",
+        { y: -20, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: galleryRef.current,
+            start: "top 85%",
+            invalidateOnRefresh: true,
+            once: true,
+          },
+        }
+      );
 
-      gsap.from(".project__item", {
-        y: 50,
-        opacity: 0,
-        scale: 0.95,
-        duration: 0.6,
-        stagger: 0.12,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".project__grid",
-          start: "top 80%",
-        },
-      });
+      gsap.fromTo(
+        ".project__item",
+        { y: 50, opacity: 0, scale: 0.95 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.6,
+          stagger: 0.12,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".project__grid",
+            start: "top 80%",
+            invalidateOnRefresh: true,
+            once: true,
+          },
+        }
+      );
     },
     { scope: galleryRef }
   );
+
+  // Refresh ScrollTrigger AFTER the browser has finished loading all
+  // resources (images, fonts). We use two rAF calls so the refresh runs
+  // in the same frame that the browser paints the fully-laid-out page.
+  useEffect(() => {
+    const refresh = () =>
+      requestAnimationFrame(() => requestAnimationFrame(() => ScrollTrigger.refresh()));
+
+    if (document.readyState === "complete") {
+      refresh();
+    } else {
+      window.addEventListener("load", refresh, { once: true });
+    }
+
+    return () => window.removeEventListener("load", refresh);
+  }, []);
+
+
 
   return (
     <section className="project__gallery" ref={galleryRef}>
@@ -49,7 +84,7 @@ function ProjectGallery() {
 
       <ul className="project__grid">
         {projectList.map((project) => (
-          <li className="project__item">
+          <li className="project__item" key={project.title}>
             <div className="project__inner">
               <header>
                 <div className="project__top">

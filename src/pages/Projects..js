@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -46,31 +46,56 @@ function Projects() {
 
   useGSAP(
     () => {
-      gsap.from("#projects h3", {
-        y: -20,
-        opacity: 0,
-        duration: 0.6,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 85%",
-        },
-      });
+      gsap.fromTo(
+        "h3",
+        { y: -20, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 85%",
+            invalidateOnRefresh: true,
+            once: true,
+          },
+        }
+      );
 
-      gsap.from(".projects li", {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".projects",
-          start: "top 80%",
-        },
-      });
+      gsap.fromTo(
+        ".projects li",
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".projects",
+            start: "top 80%",
+            invalidateOnRefresh: true,
+            once: true,
+          },
+        }
+      );
     },
     { scope: sectionRef }
   );
+
+  useEffect(() => {
+    const refresh = () =>
+      requestAnimationFrame(() => requestAnimationFrame(() => ScrollTrigger.refresh()));
+
+    if (document.readyState === "complete") {
+      refresh();
+    } else {
+      window.addEventListener("load", refresh, { once: true });
+    }
+
+    return () => window.removeEventListener("load", refresh);
+  }, []);
 
   return (
     <section id="projects" ref={sectionRef}>
