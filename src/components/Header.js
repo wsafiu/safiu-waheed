@@ -70,12 +70,15 @@ function Header() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActive("#" + entry.target.id);
+            const hash = "#" + entry.target.id;
+            setActive(hash);
+            // Update URL hash as user scrolls — replaceState so we
+            // don't spam the browser history stack on every scroll event
+            window.history.replaceState(null, "", hash);
           }
         });
       },
       {
-        // Detect the section that occupies the top-center of the viewport
         rootMargin: `-${headerHeight + 10}px 0px -55% 0px`,
         threshold: 0,
       }
