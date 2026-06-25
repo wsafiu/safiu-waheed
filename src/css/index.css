@@ -42,6 +42,15 @@
     padding: 0;
 }
 
+/* ── Smooth anchor navigation ───────────────────────────────────
+   scroll-behavior : smooth scrolling when following hash links
+   scroll-padding-top: offsets the fixed header so the target
+   section isn't hidden behind the navbar                       */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-height);
+}
+
 ::selection {
     background-color: var(--lightest-navy);
     color: var(--lightest-slate);
@@ -91,6 +100,8 @@ section {
     margin: 0px auto;
     padding: 100px 0px;
     max-width: 1000px;
+    /* Extra safety: some browsers use scroll-margin instead of html scroll-padding */
+    scroll-margin-top: var(--nav-height);
 }
 
 h1, h2, h3, h4, h5, h6 {

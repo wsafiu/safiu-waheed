@@ -73,7 +73,12 @@
 }
 
 .menu ol li a {
-    padding: 10px;
+  padding: 10px;
+}
+
+.menu ol li a.nav-active,
+.menu__small_aside ol li a.nav-active {
+  color: var(--green);
 }
 
 a {
