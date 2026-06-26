@@ -7,10 +7,10 @@ import ResumeBtn from "./ResumeBtn";
 import "../css/header.css";
 
 const NAV_LINKS = [
-  { label: "About",      href: "#about" },
+  { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
-  { label: "Work",       href: "#projects" },
-  { label: "Contact",    href: "#contact" },
+  { label: "Work", href: "#projects" },
+  { label: "Contact", href: "#contact" },
 ];
 
 /**

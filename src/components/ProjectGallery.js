@@ -44,7 +44,7 @@ function ProjectGallery() {
           scale: 1,
           duration: 0.6,
           stagger: 0.12,
-          ease: "power3.out",
+          ease: "back.out(1.2)",
           scrollTrigger: {
             trigger: ".project__grid",
             start: "top 80%",
@@ -53,6 +53,54 @@ function ProjectGallery() {
           },
         }
       );
+
+      // ── 3D Cursor-Driven Perspective Tilt ─────────────────────────────────
+      const items = gsap.utils.toArray(galleryRef.current.querySelectorAll(".project__item"));
+      const cleanups = [];
+
+      items.forEach((item) => {
+        const inner = item.querySelector(".project__inner");
+
+        const handleMouseMove = (e) => {
+          const rect = item.getBoundingClientRect();
+          // Calculate mouse position relative to the center of the element (-0.5 to 0.5)
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+          // Animate the tilt based on cursor position
+          gsap.to(inner, {
+            duration: 0.4,
+            rotateY: x * 15, // Max 7.5 deg rotation
+            rotateX: -y * 15,
+            transformPerspective: 1000,
+            ease: "power2.out",
+            overwrite: "auto",
+          });
+        };
+
+        const handleMouseLeave = () => {
+          // Reset the tilt when mouse leaves
+          gsap.to(inner, {
+            duration: 0.7,
+            rotateY: 0,
+            rotateX: 0,
+            ease: "elastic.out(1, 0.5)",
+            overwrite: "auto",
+          });
+        };
+
+        item.addEventListener("mousemove", handleMouseMove);
+        item.addEventListener("mouseleave", handleMouseLeave);
+
+        cleanups.push(() => {
+          item.removeEventListener("mousemove", handleMouseMove);
+          item.removeEventListener("mouseleave", handleMouseLeave);
+        });
+      });
+
+      return () => {
+        cleanups.forEach((cleanup) => cleanup());
+      };
     },
     { scope: galleryRef }
   );
@@ -76,7 +124,11 @@ function ProjectGallery() {
 
 
   return (
-    <section className="project__gallery" ref={galleryRef}>
+    <section className="project__gallery" ref={galleryRef} style={{ position: "relative" }}>
+      {/* Ambient background glows for Glassmorphism */}
+      <div className="ambient-glow glow-1"></div>
+      <div className="ambient-glow glow-2"></div>
+
       <h2 className="title">Projects Gallery</h2>
       <a href="#/" className="inline__link archieve__link">
         Featured Project

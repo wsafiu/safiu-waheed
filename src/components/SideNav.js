@@ -2,10 +2,10 @@ import "../css/sidenav.css";
 import ResumeBtn from "./ResumeBtn";
 
 const NAV_LINKS = [
-  { label: "About",      href: "#about" },
+  { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
-  { label: "Work",       href: "#projects" },
-  { label: "Contact",    href: "#contact" },
+  { label: "Work", href: "#projects" },
+  { label: "Contact", href: "#contact" },
 ];
 
 function SideNav({ onNavClick, activeHref }) {

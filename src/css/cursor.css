@@ -22,8 +22,8 @@
     background-color: var(--navy);
     pointer-events: none;
     z-index: 9999;
-    /* Centre on the cursor hotspot */
-    transform: translate(-50%, -50%);
+    /* Position below the cursor so the pointer tip is visible */
+    transform: translate(-50%, 15px);
     transition: opacity 0.15s ease;
 }
 

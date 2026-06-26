@@ -1,7 +1,7 @@
 import Intro from "./components/Intro";
 import About from "./pages/About";
 import Experience from "./pages/Experience";
-import Projects from "./pages/Projects.";
+import Certifications from "./pages/Certification";
 import ProjectGallery from "./components/ProjectGallery";
 import Contact from "./pages/Contact";
 
@@ -12,7 +12,7 @@ function Main() {
       <Intro />
       <About />
       <Experience />
-      <Projects />
+      <Certifications />
       <ProjectGallery />
       <Contact />
     </main>
