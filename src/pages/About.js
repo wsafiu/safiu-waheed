@@ -101,6 +101,42 @@ function About() {
           start: "top 88%",
         },
       });
+
+      // ── 3D Cursor-Driven Perspective Tilt for Photo ─────────────────────
+      const picWrapper = aboutRef.current.querySelector(".about__pic .wrapper");
+
+      const handleMouseMove = (e) => {
+        const rect = picWrapper.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+        gsap.to(picWrapper, {
+          duration: 0.4,
+          rotateY: x * 70, // max 10 deg rotation
+          rotateX: -y * 70,
+          transformPerspective: 1000,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+      };
+
+      const handleMouseLeave = () => {
+        gsap.to(picWrapper, {
+          duration: 0.7,
+          rotateY: 0,
+          rotateX: 0,
+          ease: "elastic.out(1, 0.5)",
+          overwrite: "auto",
+        });
+      };
+
+      picWrapper.addEventListener("mousemove", handleMouseMove);
+      picWrapper.addEventListener("mouseleave", handleMouseLeave);
+
+      return () => {
+        picWrapper.removeEventListener("mousemove", handleMouseMove);
+        picWrapper.removeEventListener("mouseleave", handleMouseLeave);
+      };
     },
     { scope: aboutRef }
   );

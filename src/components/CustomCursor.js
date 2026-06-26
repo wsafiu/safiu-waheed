@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import "../css/cursor.css";
 
 const ZOOM = 2;   // magnification level
-const SIZE = 130; // lens diameter in px
+const SIZE = 60;  // lens diameter in px (must match cursor.css width/height)
 
 function CustomCursor() {
   const lensRef  = useRef(null);

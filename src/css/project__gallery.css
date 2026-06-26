@@ -35,14 +35,37 @@ a.inline__link::after{
     bottom: 0.1em;
 }
 
+/* Ambient glow for glassmorphism */
+.ambient-glow {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background-color: var(--green);
+    opacity: 0.12;
+    filter: blur(100px);
+    z-index: 0;
+    pointer-events: none;
+}
+.glow-1 {
+    top: 15%;
+    left: -5%;
+}
+.glow-2 {
+    bottom: 20%;
+    right: -5%;
+    background-color: #00d2ff; /* A cyan secondary glow */
+    opacity: 0.08;
+}
+
 .project__gallery .project__grid {
     list-style: none;
     padding: 0px;
     margin: 50px 0px 0px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
+    column-width: 250px;
+    column-gap: 20px;
     position: relative;
+    z-index: 1; /* Stay above glows */
 }
 
 
@@ -50,6 +73,13 @@ a.inline__link::after{
     position: relative;
     cursor: default;
     transition: var(--transition);
+    
+    /* Masonry column packing */
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 20px;
+    display: inline-block;
+    width: 100%;
 }
 
 .project__item .project__inner {
@@ -61,12 +91,31 @@ a.inline__link::after{
     align-items: center;
     flex-direction: column;
     position: relative;
-    height: 100%;
     padding: 2rem 1.75rem;
-    border-radius: var(--boreder-radius);
-    background-color: var(--light-navy);
-    transition: var(--transition);
+    border-radius: var(--border-radius); /* Fixed spelling */
+    
+    /* Premium Glassmorphism styling */
+    background: rgba(17, 34, 64, 0.7); /* Translucent base */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    
+    /* Only transition colors/shadows, let GSAP handle transform */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    transform-style: preserve-3d;
 }
+
+/* Hover effects */
+.project__item:hover .project__inner {
+    box-shadow: 0 20px 40px -15px var(--navy-shadow), 0 0 20px rgba(100, 255, 218, 0.05);
+    border-color: rgba(100, 255, 218, 0.15);
+    background: rgba(17, 34, 64, 0.85);
+}
+
+.project__item:hover .project__title a {
+    color: var(--green);
+}
+
 
 
 .project__inner .project__top {
@@ -109,11 +158,13 @@ a.inline__link::after{
     margin: 0 0 10px;
     color: var(--lightest-slate);
     font-size: var(--fz-xxl);
+    transition: var(--transition);
 }
 
 .project__item .project__description {
     color: var(--light-slate);
-    font-size: 17px;
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 footer {
@@ -143,6 +194,6 @@ footer .project__tech__list li:not(:last-of-type) {
 
 @media (max-width: 1080px) {
     .project__gallery .project__grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        column-width: 300px;
     }
 }

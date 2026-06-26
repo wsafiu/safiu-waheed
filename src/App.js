@@ -125,7 +125,7 @@ function App() {
           </li>
           <li>
             <a
-              href="https://www.linkedin.com/in/waheed-safiu-5907a421b/"
+              href="https://www.linkedin.com/in/waheedianho/"
               aria-label="Linkedin"
               target="_blank"
               rel="noreferrer"
