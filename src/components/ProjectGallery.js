@@ -125,7 +125,6 @@ function ProjectGallery() {
 
   return (
     <section className="project__gallery" ref={galleryRef} style={{ position: "relative" }}>
-      {/* Ambient background glows for Glassmorphism */}
       <div className="ambient-glow glow-1"></div>
       <div className="ambient-glow glow-2"></div>
 

@@ -1,13 +1,59 @@
 #contact {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto 100px;
     text-align: center;
+    position: relative;
+    padding: 60px 20px;
+}
+
+/* Ambient glow for depth */
+#contact .ambient-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.15;
+}
+
+#contact .contact-glow-1 {
+    top: -10%;
+    left: 10%;
+    background-color: var(--green);
+}
+
+#contact .contact-glow-2 {
+    bottom: -10%;
+    right: 10%;
+    background-color: #00d2ff;
+}
+
+/* Glassmorphism Card */
+#contact .contact__inner {
+    position: relative;
+    z-index: 1;
+    padding: 60px 40px;
+    border-radius: var(--border-radius);
+    background: rgba(17, 34, 64, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px -15px var(--navy-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact .contact__inner:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 50px -15px var(--navy-shadow), 0 0 30px rgba(100, 255, 218, 0.1);
+    border-color: rgba(100, 255, 218, 0.2);
 }
 
 #contact .overline {
     display: block;
     margin-bottom: 20px;
-    color: var(--gren);
+    color: var(--green);
     font-family: var(--font-mono);
     font-size: var(--fz-md);
     font-weight: 400;
@@ -22,17 +68,51 @@
     display: none;
 }
 
+#contact .title {
+    font-size: clamp(40px, 5vw, 60px);
+    margin-bottom: 20px;
+    color: var(--lightest-slate);
+}
+
+#contact .contact__desc {
+    color: var(--slate);
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 500px;
+    margin: 0 auto 50px;
+}
+
+/* Magnetic Button Wrapper */
+#contact .button__wrapper {
+    display: inline-block;
+    padding: 20px; /* Provide invisible area for magnetic pull */
+}
+
 #contact .email__link {
-    color: var(--green);
-    background-color: transparent;
+    display: inline-block;
+    color: var(--navy);
+    background-color: var(--green);
     border: 1px solid var(--green);
     border-radius: var(--border-radius);
-    padding: 1.25rem 1.75rem;
+    padding: 1.25rem 2rem;
     font-size: var(--fz-sm);
     font-family: var(--font-mono);
+    font-weight: 600;
     line-height: 1;
     text-decoration: none;
     cursor: pointer;
-    transition: var(--transition);
-    margin-top: 50px;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    box-shadow: 0 10px 20px -10px rgba(100, 255, 218, 0.5);
+}
+
+#contact .email__link:hover {
+    background-color: transparent;
+    color: var(--green);
+    box-shadow: 0 15px 25px -10px rgba(100, 255, 218, 0.3);
+}
+
+@media (max-width: 768px) {
+    #contact .contact__inner {
+        padding: 40px 20px;
+    }
 }
