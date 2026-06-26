@@ -19,7 +19,7 @@ a.inline__link {
     color: var(--green);
 }
 
-a.inline__link::after{
+a.inline__link::after {
     content: "";
     width: 0px;
     display: block;
@@ -47,14 +47,17 @@ a.inline__link::after{
     z-index: 0;
     pointer-events: none;
 }
+
 .glow-1 {
     top: 15%;
     left: -5%;
 }
+
 .glow-2 {
     bottom: 20%;
     right: -5%;
-    background-color: #00d2ff; /* A cyan secondary glow */
+    background-color: #00d2ff;
+    /* A cyan secondary glow */
     opacity: 0.08;
 }
 
@@ -65,7 +68,8 @@ a.inline__link::after{
     column-width: 250px;
     column-gap: 20px;
     position: relative;
-    z-index: 1; /* Stay above glows */
+    z-index: 1;
+    /* Stay above glows */
 }
 
 
@@ -73,7 +77,7 @@ a.inline__link::after{
     position: relative;
     cursor: default;
     transition: var(--transition);
-    
+
     /* Masonry column packing */
     break-inside: avoid;
     page-break-inside: avoid;
@@ -85,21 +89,23 @@ a.inline__link::after{
 .project__item .project__inner {
     box-shadow: 0 10px 30px -15px var(--navy-shadow);
     display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
+    /* -webkit-box-pack: center; */
+    /* justify-content: center; */
+    /* -webkit-box-align: center; */
+    /* align-items: center; */
     flex-direction: column;
     position: relative;
     padding: 2rem 1.75rem;
-    border-radius: var(--border-radius); /* Fixed spelling */
-    
+    border-radius: var(--border-radius);
+    /* Fixed spelling */
+
     /* Premium Glassmorphism styling */
-    background: rgba(17, 34, 64, 0.7); /* Translucent base */
+    background: rgba(17, 34, 64, 0.7);
+    /* Translucent base */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    
+
     /* Only transition colors/shadows, let GSAP handle transform */
     transition: box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
     transform-style: preserve-3d;
@@ -159,6 +165,7 @@ a.inline__link::after{
     color: var(--lightest-slate);
     font-size: var(--fz-xxl);
     transition: var(--transition);
+    overflow: hidden;
 }
 
 .project__item .project__description {
