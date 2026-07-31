@@ -1,35 +1,36 @@
 [
   {
     "projectId": 1,
-    "title": "SchoolManagementSystemAPI",
-    "desc": "No description provided.",
+    "title": "school-hub",
+    "desc": "SchoolHub is a comprehensive and scalable School Management System built to streamline administrative tasks, enhance communication, and provide dedicated portals for all key stakeholders in an educational institution.",
     "resources": [
-      "C#",
-      "Dockerfile",
-      "CSS",
+      "JavaScript",
       "TypeScript",
-      "JavaScript"
+      "HTML",
+      "SCSS"
     ],
     "status": "completed",
-    "repo": "https://github.com/WAHEEDIANHO/SchoolManagementSystemAPI",
-    "url": "https://github.com/WAHEEDIANHO/SchoolManagementSystemAPI"
+    "repo": "https://github.com/waheedianho/school-hub",
+    "url": "https://school-hub.waheedianho.codes/"
   },
   {
     "projectId": 2,
-    "title": "CTHubApi",
-    "desc": "No description provided.",
+    "title": "result-management-system",
+    "desc": "A comprehensive and scalable Student Result Management System built with Node.js, Express, and MongoDB. This application is designed to streamline the process of managing schools, classes, students, subjects, and examination results efficiently. It features distinct role-based portals for administrators and students.",
     "resources": [
-      "C#",
-      "Dockerfile"
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "EJS"
     ],
     "status": "completed",
-    "repo": "https://github.com/WAHEEDIANHO/CTHubApi",
-    "url": "https://github.com/WAHEEDIANHO/CTHubApi"
+    "repo": "https://github.com/waheedianho/result-management-system",
+    "url": "https://rms.waheedianho.codes/"
   },
   {
     "projectId": 3,
-    "title": "video-conference-api",
-    "desc": "No description provided.",
+    "title": "video-conference",
+    "desc": "Full-stack WebRTC video conferencing app — NestJS + mediasoup SFU backend, Angular frontend, PostgreSQL & MongoDB, with tracing, metrics, and RBAC.",
     "resources": [
       "JavaScript",
       "Shell",
@@ -38,26 +39,35 @@
       "TypeSpec"
     ],
     "status": "completed",
-    "repo": "https://github.com/WAHEEDIANHO/video-conference-api",
-    "url": "https://github.com/WAHEEDIANHO/video-conference-api"
+    "repo": "https://github.com/waheedianho/video-conference",
+    "url": "https://conference.waheedianho.codes/"
   },
   {
     "projectId": 4,
-    "title": "rms",
-    "desc": "Result Management System",
+    "title": "Musaabaqah",
+    "desc": "An application for organizing quran competition",
     "resources": [
-      "JavaScript",
-      "CSS",
-      "EJS",
-      "HTML",
-      "SCSS"
+      "TypeScript",
+      "JavaScript"
     ],
     "status": "completed",
-    "repo": "https://github.com/WAHEEDIANHO/rms",
-    "url": "https://github.com/WAHEEDIANHO/rms"
+    "repo": "https://github.com/waheedianho/Musaabaqah",
+    "url": "https://github.com/waheedianho/Musaabaqah"
   },
   {
     "projectId": 5,
+    "title": "CTHubApi",
+    "desc": "No description provided.",
+    "resources": [
+      "C#",
+      "Dockerfile"
+    ],
+    "status": "completed",
+    "repo": "https://github.com/waheedianho/CTHubApi",
+    "url": "https://github.com/waheedianho/CTHubApi"
+  },
+  {
+    "projectId": 6,
     "title": "ussd",
     "desc": "No description provided.",
     "resources": [
@@ -66,19 +76,7 @@
       "CSS"
     ],
     "status": "completed",
-    "repo": "https://github.com/WAHEEDIANHO/ussd",
-    "url": "https://github.com/WAHEEDIANHO/ussd"
-  },
-  {
-    "projectId": 6,
-    "title": "Musaabaqah",
-    "desc": "An application for organizing quran competition",
-    "resources": [
-      "TypeScript",
-      "JavaScript"
-    ],
-    "status": "completed",
-    "repo": "https://github.com/WAHEEDIANHO/Musaabaqah",
-    "url": "https://github.com/WAHEEDIANHO/Musaabaqah"
+    "repo": "https://github.com/waheedianho/ussd",
+    "url": "https://github.com/waheedianho/ussd"
   }
 ]
